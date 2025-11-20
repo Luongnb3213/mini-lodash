@@ -1,6 +1,19 @@
 import { chunk, compact, map } from './src';
+import { isUndefined } from './src/_internal/isUndefined';
 
-console.log(chunk([1, 2, 3, 4, 5], 2));
-console.log(compact([0, 1, false, 2, '', 3]));
+// === TRUE cases ===
+console.log("undefined:", isUndefined(undefined));            // true
+// @ts-ignore - intentionally missing argument
+console.log("no argument:", isUndefined());                   // true
+console.log(isUndefined(({} as any).missing));   // true
 
-console.log(map({ a: 1, b: 2 }, (v, k) => `${k}:${v}`));
+// === FALSE cases ===
+console.log("null:", isUndefined(null));                      // false
+console.log("0:", isUndefined(0));                            // false
+console.log("NaN:", isUndefined(NaN));                        // false
+console.log("empty string:", isUndefined(""));                // false
+console.log("string:", isUndefined("abc"));                   // false
+console.log("false:", isUndefined(false));                    // false
+console.log("object:", isUndefined({}));                      // false
+console.log("array:", isUndefined([]));                       // false
+console.log("function:", isUndefined(() => {}));              // false
