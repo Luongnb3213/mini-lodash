@@ -1,19 +1,7 @@
-import { chunk, compact, map } from './src';
-import { isUndefined } from './src/_internal/isUndefined';
+import { head } from './src/array/head';
 
-// === TRUE cases ===
-console.log("undefined:", isUndefined(undefined));            // true
-// @ts-ignore - intentionally missing argument
-console.log("no argument:", isUndefined());                   // true
-console.log(isUndefined(({} as any).missing));   // true
-
-// === FALSE cases ===
-console.log("null:", isUndefined(null));                      // false
-console.log("0:", isUndefined(0));                            // false
-console.log("NaN:", isUndefined(NaN));                        // false
-console.log("empty string:", isUndefined(""));                // false
-console.log("string:", isUndefined("abc"));                   // false
-console.log("false:", isUndefined(false));                    // false
-console.log("object:", isUndefined({}));                      // false
-console.log("array:", isUndefined([]));                       // false
-console.log("function:", isUndefined(() => {}));              // false
+console.log(head([1, 2, 3])); // 1
+console.log(head(['a', 'b'])); // 'a'
+console.log(head([])); // undefined
+console.log(head(null)); // undefined
+console.log(head(undefined)); // undefined
