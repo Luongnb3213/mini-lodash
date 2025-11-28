@@ -1,38 +1,31 @@
+import { flatten } from './src/array/flatten';
 import { head } from './src/array/head';
 import { uniq } from './src/array/uniq';
 
+// Basic
+console.log(flatten([1, [2, 3], [4, 5]]));
+// 👉 [1, 2, 3, 4, 5]
 
-// Basic cases
-console.log(uniq([1, 1, 2, 3, 3]));
+// Mixed nesting
+console.log(flatten([1, [2, [3]], 4]));
+// 👉 [1, 2, [3], 4]   (chỉ flatten 1 level)
+
+// Already flat
+console.log(flatten([1, 2, 3]));
 // 👉 [1, 2, 3]
 
-console.log(uniq(['a', 'b', 'a', 'c']));
-// 👉 ['a', 'b', 'c']
-
-// Edge cases
-console.log(uniq([]));
+// Empty array
+console.log(flatten([]));
 // 👉 []
 
-console.log(uniq([1]));
-// 👉 [1]
+// Many levels
+console.log(flatten([[1], [[2]], [[[3]]]]));
+// 👉 [1, [2], [[3]]]  (flatten 1 level thôi)
 
-// Mixed data types
-console.log(uniq([1, "1", 1, "1"]));
-// 👉 [1, "1"]
+// Strings / mixed types
+console.log(flatten(['a', ['b', 'c'], 'd']));
+// 👉 ['a', 'b', 'c', 'd']
 
-console.log(uniq([true, false, true]));
-// 👉 [true, false]
-
-// Objects (reference equality)
-const obj = { a: 1 };
-console.log(uniq([obj, obj, { a: 1 }]));
-// 👉 [obj, { a: 1 }]
-// Vì object chỉ uniq theo reference, không theo value
-
-// Special values
-console.log(uniq([NaN, NaN, 1, 2, NaN]));
-// 👉 [NaN, 1, 2]
-// Set xử lý NaN rất đúng
-
-console.log(uniq([undefined, undefined, null, null, 0, 0]));
-// 👉 [undefined, null, 0]ined
+// Null / undefined inside
+console.log(flatten([1, null, [2, undefined], 3]));
+// 👉 [1, null, 2, undefined, 3]
