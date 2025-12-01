@@ -1,31 +1,33 @@
-import { flatten } from './src/array/flatten';
-import { head } from './src/array/head';
-import { uniq } from './src/array/uniq';
+import { nth } from './src/array/nth';
 
-// Basic
-console.log(flatten([1, [2, 3], [4, 5]]));
-// 👉 [1, 2, 3, 4, 5]
+console.log('--- positive index ---');
+console.log(nth([1, 2, 3], 0)); // 1
+console.log(nth([1, 2, 3], 1)); // 2
+console.log(nth([1, 2, 3], 2)); // 3
 
-// Mixed nesting
-console.log(flatten([1, [2, [3]], 4]));
-// 👉 [1, 2, [3], 4]   (chỉ flatten 1 level)
+console.log('--- negative index ---');
+console.log(nth([1, 2, 3], -1)); // 3
+console.log(nth([1, 2, 3], -2)); // 2
+console.log(nth([1, 2, 3], -3)); // 1
 
-// Already flat
-console.log(flatten([1, 2, 3]));
-// 👉 [1, 2, 3]
+console.log('--- out of range positive ---');
+console.log(nth([1, 2, 3], 3)); // undefined
+console.log(nth([1, 2, 3], 10)); // undefined
 
-// Empty array
-console.log(flatten([]));
-// 👉 []
+console.log('--- out of range negative ---');
+console.log(nth([1, 2, 3], -4)); // undefined
+console.log(nth([1, 2, 3], -10)); // undefined
 
-// Many levels
-console.log(flatten([[1], [[2]], [[[3]]]]));
-// 👉 [1, [2], [[3]]]  (flatten 1 level thôi)
+console.log('--- empty array ---');
+console.log(nth([], 0)); // undefined
+console.log(nth([], -1)); // undefined
 
-// Strings / mixed types
-console.log(flatten(['a', ['b', 'c'], 'd']));
-// 👉 ['a', 'b', 'c', 'd']
+console.log('--- null or undefined ---');
+console.log(nth(null as any, 0)); // undefined
+console.log(nth(undefined as any, 0)); // undefined
 
-// Null / undefined inside
-console.log(flatten([1, null, [2, undefined], 3]));
-// 👉 [1, null, 2, undefined, 3]
+console.log('--- different types ---');
+console.log(nth(['a', 'b', 'c'], 1)); // "b"
+console.log(nth([true, false], -1)); // false
+console.log(nth([{ x: 1 }, { x: 2 }], 1)); // {x:2}
+console.log(nth([[1], [2], [3]], -2)); // [2]
