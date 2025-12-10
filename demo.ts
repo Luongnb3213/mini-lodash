@@ -1,20 +1,46 @@
-import { sortedLastIndexOf } from './src/array/sortedLastIndexOf';
+import { unionBy } from './src/array/unionBy';
 
-console.log('--- basic sortedLastIndexOf ---');
-console.log(sortedLastIndexOf([1, 2, 3], 2)); // 1
-console.log(sortedLastIndexOf([10, 20, 20, 30], 20)); // 2
-console.log(sortedLastIndexOf([10, 20, 30], 40)); // -1
+console.log('--- basic unionBy ---');
+console.log(unionBy([[2.1], [1.2, 2.3]], Math.floor));
+// => [2.1, 1.2]
+// floor: 2 (from 2.1, 2.3), 1 (from 1.2)
 
-console.log('--- duplicates: should return LAST index ---');
-console.log(sortedLastIndexOf([1, 2, 2, 2, 3], 2)); // 3
+console.log('--- unionBy with objects ---');
+console.log(
+  unionBy(
+    [
+      [{ id: 1 }, { id: 2 }],
+      [{ id: 2 }, { id: 3 }],
+    ],
+    item => item.id,
+  ),
+);
+// => [{ id: 1 }, { id: 2 }, { id: 3 }]
 
-console.log('--- negative numbers ---');
-console.log(sortedLastIndexOf([-10, -5, -5, 0], -5)); // 2
+console.log('--- unionBy with duplicates ---');
+console.log(
+  unionBy(
+    [
+      [1, 2, 2, 3],
+      [2, 3, 4],
+    ],
+    v => v,
+  ),
+);
+// => [1, 2, 3, 4]
 
-console.log('--- strings ---');
-console.log(sortedLastIndexOf(['a', 'b', 'b', 'c'], 'b')); // 2
+console.log('--- order should follow first appearance ---');
+console.log(
+  unionBy(
+    [
+      [3, 2, 1],
+      [1, 2, 3, 4],
+    ],
+    v => v,
+  ),
+);
+// => [3, 2, 1, 4]
 
-console.log('--- empty / nullish ---');
-console.log(sortedLastIndexOf([], 10)); // -1
-console.log(sortedLastIndexOf(null as any, 10)); // -1
-console.log(sortedLastIndexOf(undefined as any, 10)); // -1
+console.log('--- null & empty ---');
+console.log(unionBy([null as any, [1, 2], []], v => v));
+// => [1, 2]
