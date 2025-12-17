@@ -1,21 +1,19 @@
-import { zipObjectDeep } from './src/array/zipObjectDeep';
+import { xor } from './src/array/xor';
 
-console.log(zipObjectDeep(['a.b.c'], [1]));
-// { a: { b: { c: 1, d: 2 } } }
+console.log(xor([1, 2, 3], [2, 4]));
+// expect: [1, 3, 4]
 
-// console.log(zipObjectDeep(['a[0].b', 'a[1].b'], [1, 2]));
-// // { a: [ { b: 1 }, { b: 2 } ] }
+console.log(xor([1, 2], [2, 3], [3, 4]));
+// expect: [1, 4]
 
-// console.log(zipObjectDeep(['x'], [42]));
-// // { x: 42 }
+console.log(xor([1, 1, 2], [2, 3]));
+// expect: [1, 3]
 
-// console.log(zipObjectDeep([], [1, 2])); // {}
-// console.log(zipObjectDeep(null as any, [1])); // {}
-// console.log(zipObjectDeep(['a.b'], null as any)); // { a: { b: undefined } }
-const obj: any = {};
-let cur = obj;
+console.log(xor([NaN, 1], [NaN, 2]));
+// expect: [1, 2]
 
-cur.a = {};
-cur = cur.a;
+console.log(xor([], [1, 2]));
+// expect: [1, 2]
 
-console.log('test', obj);
+console.log(xor(null as any, undefined as any, [1]));
+// expect: [1]
