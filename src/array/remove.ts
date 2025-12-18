@@ -1,5 +1,5 @@
 // remove.ts
-export type Predicate<T> = (value: T, index: number, array: T[]) => boolean;
+type Predicate<T> = (value: T, index: number, array: T[]) => boolean;
 
 export function remove<T>(array: T[] | null | undefined, predicate: Predicate<T>): T[] {
   if (!array || array.length === 0) return [];

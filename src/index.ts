@@ -49,6 +49,12 @@ export * from './array/zip';
 export * from './array/zipObject';
 export * from './array/zipObjectDeep';
 export * from './array/zipWith';
+export * from './array/dropRightWhile';
+export * from './array/remove';
+export * from './array/xor';
 
 // collection
 export * from './collection/map';
+export * from './collection/filter';
+export * from './collection/forEach';
+export * from './collection/size';
