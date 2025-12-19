@@ -1,19 +1,13 @@
-import { xor } from './src/array/xor';
+import { every } from './src/collection/every';
 
-console.log(xor([1, 2, 3], [2, 4]));
-// expect: [1, 3, 4]
+console.log(every([2, 4, 6], n => n % 2 === 0));
+// => true
 
-console.log(xor([1, 2], [2, 3], [3, 4]));
-// expect: [1, 4]
+console.log(every([2, 3, 6], n => n % 2 === 0));
+// => false
 
-console.log(xor([1, 1, 2], [2, 3]));
-// expect: [1, 3]
+console.log(every([], () => false));
+// => true
 
-console.log(xor([NaN, 1], [NaN, 2]));
-// expect: [1, 2]
-
-console.log(xor([], [1, 2]));
-// expect: [1, 2]
-
-console.log(xor(null as any, undefined as any, [1]));
-// expect: [1]
+console.log(every({ a: 1, b: 2 }, v => typeof v === 'number'));
+// => true
