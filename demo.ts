@@ -1,10 +1,10 @@
-import { groupBy } from './src/collection/groupBy';
+import { partition } from './src';
 
-console.log(groupBy([6.1, 4.2, 6.3], n => Math.floor(n)));
-// { "4": [4.2], "6": [6.1, 6.3] }
+console.log(partition([1, 2, 3, 4], n => n % 2 === 0));
+// [ [2, 4], [1, 3] ]
 
-console.log(groupBy(['one', 'two', 'three'], s => s.length));
-// { "3": ["one","two"], "5": ["three"] }
+console.log(partition({ a: 1, b: 2, c: 3 }, v => v > 1));
+// [ [2, 3], [1] ]
 
-console.log(groupBy([], () => 'x')); // {}
-console.log(groupBy(null, () => 'x')); // {}
+console.log(partition(null, () => true));
+// [ [], [] ]

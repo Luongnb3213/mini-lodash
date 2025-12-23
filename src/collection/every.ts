@@ -1,4 +1,4 @@
-export type Predicate<T> = (value: T, indexOrKey: number | string, collection: any) => boolean;
+type Predicate<T> = (value: T, indexOrKey: number | string, collection: any) => boolean;
 
 export function every<T>(
   collection: T[] | Record<string, T> | null | undefined,
