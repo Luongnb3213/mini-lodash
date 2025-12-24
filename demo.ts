@@ -1,10 +1,6 @@
-import { partition } from './src';
+import { sortBy } from './src/collection/sortBy';
 
-console.log(partition([1, 2, 3, 4], n => n % 2 === 0));
-// [ [2, 4], [1, 3] ]
-
-console.log(partition({ a: 1, b: 2, c: 3 }, v => v > 1));
-// [ [2, 3], [1] ]
-
-console.log(partition(null, () => true));
-// [ [], [] ]
+console.log(sortBy([3, 1, 2], n => n)); // [1, 2, 3]
+console.log(sortBy(['bbb', 'a', 'cc'], s => s.length)); // ['a', 'cc', 'bbb']
+console.log(sortBy([{ a: 2 }, { a: 1 }], o => o.a)); // [{a:1},{a:2}]
+console.log(sortBy(null, (x: any) => x)); // []
