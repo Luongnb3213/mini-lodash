@@ -1,6 +1,6 @@
-import { sortBy } from './src/collection/sortBy';
+import { sample } from './src/collection/sample';
 
-console.log(sortBy([3, 1, 2], n => n)); // [1, 2, 3]
-console.log(sortBy(['bbb', 'a', 'cc'], s => s.length)); // ['a', 'cc', 'bbb']
-console.log(sortBy([{ a: 2 }, { a: 1 }], o => o.a)); // [{a:1},{a:2}]
-console.log(sortBy(null, (x: any) => x)); // []
+console.log(sample([1, 2, 3, 4])); // random one
+console.log(sample({ a: 10, b: 20, c: 30 })); // random value
+console.log(sample([])); // undefined
+console.log(sample(null)); // undefined
