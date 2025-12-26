@@ -1,6 +1,11 @@
-import { sample } from './src/collection/sample';
+import { flattenDepth } from './src';
+import { flatMapDepth } from './src/collection/flatMapDepth';
 
-console.log(sample([1, 2, 3, 4])); // random one
-console.log(sample({ a: 10, b: 20, c: 30 })); // random value
-console.log(sample([])); // undefined
-console.log(sample(null)); // undefined
+console.log(flatMapDepth([1, 2], n => [n, [n * 2]], 1));
+// [1,2,2,4]
+
+console.log(flatMapDepth([1], () => [[[1]]], 2));
+// [[1]]
+
+console.log(flatMapDepth(null, () => [1], 2));
+// []
