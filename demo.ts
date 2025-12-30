@@ -1,11 +1,10 @@
-import { flattenDepth } from './src';
-import { flatMapDepth } from './src/collection/flatMapDepth';
+import { pickBy } from './src/collection/pickBy';
 
-console.log(flatMapDepth([1, 2], n => [n, [n * 2]], 1));
-// [1,2,2,4]
+console.log(pickBy({ a: 1, b: 2, c: 3 }, v => v > 1));
+// { b: 2, c: 3 }
 
-console.log(flatMapDepth([1], () => [[[1]]], 2));
-// [[1]]
+console.log(pickBy({ a: 1, b: null }, v => v != null));
+// { a: 1 }
 
-console.log(flatMapDepth(null, () => [1], 2));
-// []
+console.log(pickBy(null, () => true));
+// {}
