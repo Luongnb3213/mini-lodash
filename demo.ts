@@ -1,10 +1,14 @@
-import { pickBy } from './src/collection/pickBy';
+import { assignIn } from './src/collection/assignIn';
 
-console.log(pickBy({ a: 1, b: 2, c: 3 }, v => v > 1));
-// { b: 2, c: 3 }
+const proto = { a: 1 };
+const obj = Object.create(proto);
+obj.b = 2;
 
-console.log(pickBy({ a: 1, b: null }, v => v != null));
-// { a: 1 }
+console.log(assignIn({}, obj));
+// { a: 1, b: 2 }
 
-console.log(pickBy(null, () => true));
+console.log(assignIn({ a: 0 }, { a: 1, b: 2 }));
+// { a: 1, b: 2 }
+
+console.log(assignIn(null as any, { a: 1 }));
 // {}
