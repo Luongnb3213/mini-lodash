@@ -1,14 +1,11 @@
-import { assignIn } from './src/collection/assignIn';
+import { get } from './src/object/get';
+import { has } from './src/object/has';
+import { set } from './src/object/set';
 
-const proto = { a: 1 };
-const obj = Object.create(proto);
-obj.b = 2;
+/* Test cases */
+const obj = { a: { b: { c: 1 } } };
 
-console.log(assignIn({}, obj));
-// { a: 1, b: 2 }
-
-console.log(assignIn({ a: 0 }, { a: 1, b: 2 }));
-// { a: 1, b: 2 }
-
-console.log(assignIn(null as any, { a: 1 }));
-// {}
+console.log(has(obj, 'a')); // true
+console.log(has(obj, 'a.b.c')); // true
+console.log(has(obj, 'a.b.d')); // false
+console.log(has(obj, ['a', 'b'])); // true

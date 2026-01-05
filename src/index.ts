@@ -54,15 +54,37 @@ export * from './array/remove';
 export * from './array/xor';
 
 // collection
-export * from './collection/map';
-export * from './collection/filter';
-export * from './collection/forEach';
-export * from './collection/size';
-export * from './collection/keyBy';
-export * from './collection/every';
-export * from './collection/some';
-export * from './collection/find';
-export * from './collection/reduce';
-export * from './collection/groupBy';
+export * from './collection/assignIn';
 export * from './collection/countBy';
+export * from './collection/defaults';
+export * from './collection/every';
+export * from './collection/filter';
+export * from './collection/find';
+export * from './collection/flatMap';
+export * from './collection/flatMapDeep';
+export * from './collection/flatMapDepth';
+export * from './collection/forEach';
+export * from './collection/groupBy';
+export * from './collection/includes';
+export * from './collection/invokeMap';
+export * from './collection/keyBy';
+export * from './collection/map';
+export * from './collection/mapKeys';
+export * from './collection/mapValues';
+export * from './collection/omitBy';
 export * from './collection/partition';
+export * from './collection/pickBy';
+export * from './collection/reduce';
+export * from './collection/reject';
+export * from './collection/sample';
+export * from './collection/sampleSize';
+export * from './collection/shuffle';
+export * from './collection/size';
+export * from './collection/some';
+export * from './collection/sortBy';
+
+//object
+
+export * from './object/get';
+export * from './object/has';
+export * from './object/set';
