@@ -88,3 +88,8 @@ export * from './collection/sortBy';
 export * from './object/get';
 export * from './object/has';
 export * from './object/set';
+export * from './object/merge';
+export * from './object/omit';
+export * from './object/pick';
+export * from './object/cloneDeep';
+export * from './object/defaultsDeep';
