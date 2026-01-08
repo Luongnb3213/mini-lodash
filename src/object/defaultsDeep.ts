@@ -1,5 +1,3 @@
-import { merge } from './merge';
-
 export function defaultsDeep<T extends Record<string, any>>(
   object: T,
   ...sources: Array<Record<string, any>>

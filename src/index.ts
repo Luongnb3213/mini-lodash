@@ -93,3 +93,5 @@ export * from './object/omit';
 export * from './object/pick';
 export * from './object/cloneDeep';
 export * from './object/defaultsDeep';
+export * from './object/isEqual';
+export * from './object/isMatch';
